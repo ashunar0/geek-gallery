@@ -30,7 +30,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u1",
     title: "タスク管理アプリ TaskFlow",
     url: "https://taskflow-demo.vercel.app",
-    imageKey: "works/taskflow.png",
+    imageKey: "https://placehold.co/800x450/2563eb/white?text=TaskFlow",
     techStack: ["React", "Next.js", "Supabase", "Tailwind CSS"],
     description:
       "チームでのタスク管理を効率化するWebアプリ。ドラッグ&ドロップでタスクのステータスを変更でき、リアルタイムで同期されます。",
@@ -53,7 +53,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u2",
     title: "レシピ共有SNS CookShare",
     url: "https://cookshare-demo.vercel.app",
-    imageKey: "works/cookshare.png",
+    imageKey: "https://placehold.co/800x450/f97316/white?text=CookShare",
     techStack: ["React", "Firebase", "Material UI"],
     description:
       "料理好きのためのレシピ共有SNS。写真付きでレシピを投稿し、他のユーザーのレシピにいいねやコメントができます。",
@@ -75,7 +75,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u3",
     title: "2Dアクションゲーム SkyRunner",
     url: "https://skyrunner-demo.netlify.app",
-    imageKey: "works/skyrunner.png",
+    imageKey: "https://placehold.co/800x450/8b5cf6/white?text=SkyRunner",
     techStack: ["Unity", "C#"],
     description:
       "空を駆け抜ける爽快2Dアクションゲーム。ランダム生成されるステージで何度でも楽しめます。",
@@ -97,7 +97,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u1",
     title: "AI画像生成ツール PixelDream",
     url: "https://pixeldream-demo.vercel.app",
-    imageKey: "works/pixeldream.png",
+    imageKey: "https://placehold.co/800x450/ec4899/white?text=PixelDream",
     techStack: ["Next.js", "Python", "Stable Diffusion", "Tailwind CSS"],
     description:
       "テキストプロンプトから画像を生成するWebアプリ。生成した画像はギャラリーとして保存・共有できます。",
@@ -119,7 +119,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u2",
     title: "ポートフォリオサイト",
     url: "https://sato-portfolio.vercel.app",
-    imageKey: "works/portfolio.png",
+    imageKey: "https://placehold.co/800x450/14b8a6/white?text=Portfolio",
     techStack: ["Astro", "Tailwind CSS", "Framer Motion"],
     description:
       "自分の作品や経歴をまとめたポートフォリオサイト。スクロールアニメーションで作品を印象的に見せます。",
@@ -141,7 +141,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u3",
     title: "天気予報チャットボット WeatherBot",
     url: "https://weatherbot-demo.vercel.app",
-    imageKey: "works/weatherbot.png",
+    imageKey: "https://placehold.co/800x450/eab308/white?text=WeatherBot",
     techStack: ["Python", "OpenAI API", "LINE Messaging API"],
     description:
       "LINEで天気を聞くと、AIが自然な文章で天気予報を教えてくれるチャットボット。",

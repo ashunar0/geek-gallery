@@ -1,19 +1,37 @@
-import { Button } from "@/components/ui/button"
+import { Suspense } from "react"
+import { WorkCard } from "@/components/work-card"
+import { CourseFilter } from "@/components/course-filter"
+import { mockWorks } from "@/lib/mock-data"
 
-export default function Page() {
+type Props = {
+  searchParams: Promise<{ course?: string }>
+}
+
+export default async function HomePage({ searchParams }: Props) {
+  const { course } = await searchParams
+
+  // TODO: #15 でDB取得に切り替え
+  const works = course
+    ? mockWorks.filter((w) => w.course === course)
+    : mockWorks
+
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <div className="flex flex-col gap-6">
+      <Suspense>
+        <CourseFilter />
+      </Suspense>
+
+      {works.length === 0 ? (
+        <p className="py-12 text-center text-muted-foreground">
+          作品がまだありません
+        </p>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {works.map((work) => (
+            <WorkCard key={work.id} work={work} />
+          ))}
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
+      )}
     </div>
   )
 }
