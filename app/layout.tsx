@@ -16,6 +16,9 @@ const fontMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GeekGallery | GeekSalon 受講生作品集",
   description: "GeekSalon 受講生の作品をギャラリー形式で閲覧できるサイト",
+  icons: {
+    icon: "/gallery.svg",
+  },
 }
 
 export default function RootLayout({
