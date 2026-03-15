@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import { eq } from "drizzle-orm"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
@@ -69,6 +70,8 @@ export async function createWork(formData: FormData) {
     })
     .returning()
 
+  revalidatePath("/")
+  revalidatePath(`/users/${session.user.id}`)
   redirect(`/works/${work.id}`)
 }
 
@@ -87,6 +90,8 @@ export async function deleteWork(id: string) {
 
   await db.delete(works).where(eq(works.id, id))
 
+  revalidatePath("/")
+  revalidatePath(`/users/${session.user.id}`)
   redirect("/")
 }
 
@@ -141,5 +146,8 @@ export async function updateWork(id: string, formData: FormData) {
     })
     .where(eq(works.id, id))
 
+  revalidatePath("/")
+  revalidatePath(`/works/${id}`)
+  revalidatePath(`/users/${session.user.id}`)
   redirect(`/works/${id}`)
 }

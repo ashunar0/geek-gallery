@@ -1,15 +1,12 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
-import { auth } from "@/auth"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { GitHubIcon, XIcon } from "@/components/icons"
-import { ProfileEditDialog } from "@/components/profile-edit-dialog"
+import { ProfileEditButton, NewWorkButton } from "@/components/user-owner-actions"
 import { WorkCard } from "@/components/work-card"
 import { getUserById } from "@/lib/queries/users"
 import { getWorksByUserId } from "@/lib/queries/works"
-import { Globe, Plus } from "lucide-react"
+import { Globe } from "lucide-react"
 
 export async function generateMetadata({
   params,
@@ -35,18 +32,19 @@ export async function generateMetadata({
   }
 }
 
+export const revalidate = 60
+
 export default async function UserPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
-  const [{ id }, session] = await Promise.all([params, auth()])
+  const { id } = await params
   const user = await getUserById(id)
 
   if (!user) notFound()
 
   const works = await getWorksByUserId(id)
-  const isOwner = session?.user?.id === id
 
   return (
     <div className="space-y-8">
@@ -93,21 +91,14 @@ export default async function UserPage({
             )}
           </div>
         </div>
-        {isOwner && <ProfileEditDialog user={user} />}
+        <ProfileEditButton user={user} />
       </div>
 
       {/* 作品一覧 */}
       <div>
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">作品（{works.length}）</h2>
-          {isOwner && (
-            <Button asChild size="sm">
-              <Link href="/works/new">
-                <Plus className="size-4" />
-                投稿する
-              </Link>
-            </Button>
-          )}
+          <NewWorkButton userId={id} />
         </div>
         {works.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

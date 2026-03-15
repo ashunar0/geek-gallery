@@ -3,6 +3,8 @@ import { WorkCard } from "@/components/work-card"
 import { CourseFilter } from "@/components/course-filter"
 import { getWorks } from "@/lib/queries/works"
 
+export const revalidate = 60
+
 type Props = {
   searchParams: Promise<{ course?: string }>
 }
