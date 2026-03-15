@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select"
 import { COURSES } from "@/lib/constants"
 import { workSchema, type WorkFormValues } from "@/lib/validations/work"
+import { createWork, updateWork } from "@/lib/actions/work"
 import { Upload, X } from "lucide-react"
 import type { WorkWithUser } from "@/lib/types"
 
@@ -58,7 +59,7 @@ export function WorkForm({ work }: WorkFormProps) {
       title: work?.title ?? "",
       url: work?.url ?? "",
       githubUrl: work?.githubUrl ?? "",
-      course: work?.course as WorkFormValues["course"] | undefined,
+      course: (work?.course as WorkFormValues["course"]) ?? undefined,
       cohort: work?.cohort ?? undefined,
       duration: work?.duration ?? "",
       techStack: work?.techStack ?? [],
@@ -109,9 +110,12 @@ export function WorkForm({ work }: WorkFormProps) {
   }
 
   // --- 送信 ---
-  function onSubmit(data: WorkFormValues) {
-    // TODO: Phase 5 で API に接続
-    console.log({ ...data, imageFile })
+  async function onSubmit(data: WorkFormValues) {
+    if (isEdit) {
+      await updateWork(work.id, data)
+    } else {
+      await createWork(data)
+    }
   }
 
   // ============================================================
@@ -214,7 +218,7 @@ export function WorkForm({ work }: WorkFormProps) {
               コース <span className="text-destructive">*</span>
             </Label>
             <Select
-              value={watch("course") ?? ""}
+              defaultValue={work?.course}
               onValueChange={(v) =>
                 setValue("course", v as WorkFormValues["course"], {
                   shouldValidate: true,

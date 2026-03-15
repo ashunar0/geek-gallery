@@ -44,14 +44,20 @@ export default async function WorkDetailPage({
           {/* サムネイル */}
           <div className="p-5">
             <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
-              <Image
-                src={work.imageKey}
-                alt={work.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 700px"
-                priority
-              />
+              {work.imageKey ? (
+                <Image
+                  src={work.imageKey}
+                  alt={work.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 700px"
+                  priority
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+                  No Image
+                </div>
+              )}
             </div>
           </div>
 

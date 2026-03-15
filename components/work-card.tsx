@@ -9,13 +9,19 @@ export function WorkCard({ work }: { work: WorkWithUser }) {
     <Link href={`/works/${work.id}`}>
       <Card className="group overflow-hidden transition-shadow hover:shadow-md">
         <div className="relative aspect-video overflow-hidden bg-muted">
-          <Image
-            src={work.imageKey}
-            alt={work.title}
-            fill
-            className="object-cover transition-transform group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          {work.imageKey ? (
+            <Image
+              src={work.imageKey}
+              alt={work.title}
+              fill
+              className="object-cover transition-transform group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+              No Image
+            </div>
+          )}
         </div>
         <div className="flex flex-col gap-3 p-4">
           <CourseBadge course={work.course} />

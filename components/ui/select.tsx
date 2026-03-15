@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 // --- Select Root ---
 type SelectProps = {
   value?: string;
+  defaultValue?: string;
   onValueChange?: (value: string) => void;
   disabled?: boolean;
   children: React.ReactNode;
@@ -15,6 +16,7 @@ type SelectProps = {
 
 export function Select({
   value,
+  defaultValue,
   onValueChange,
   disabled = false,
   children,
@@ -22,6 +24,7 @@ export function Select({
   return (
     <SelectPrimitive.Root
       value={value}
+      defaultValue={defaultValue}
       onValueChange={onValueChange}
       disabled={disabled}
     >
