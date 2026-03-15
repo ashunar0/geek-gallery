@@ -38,10 +38,10 @@ export default function RootLayout({
         inter.variable
       )}
     >
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className="flex min-h-screen flex-col">
         <ThemeProvider>
           <Header />
-          <main className="min-h-[calc(100vh-4rem)] bg-muted/40">
+          <main className="flex-1 bg-muted/40">
             <div className="mx-auto max-w-7xl px-4 py-6">{children}</div>
           </main>
           <Footer />

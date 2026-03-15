@@ -65,16 +65,7 @@ export async function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
-          ) : (
-            <form
-              action={async () => {
-                "use server"
-                await signIn("google")
-              }}
-            >
-              <Button type="submit">ログイン</Button>
-            </form>
-          )}
+          ) : null}
         </div>
       </div>
     </header>
