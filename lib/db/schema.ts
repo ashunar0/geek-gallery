@@ -76,6 +76,7 @@ export const works = pgTable("works", {
     .references(() => users.id, { onDelete: "cascade" }),
   title: text("title").notNull(),
   url: text("url").notNull(),
+  githubUrl: text("github_url"),
   imageKey: text("image_key").notNull(),
   techStack: jsonb("tech_stack").notNull().$type<string[]>(),
   description: text("description").notNull(),

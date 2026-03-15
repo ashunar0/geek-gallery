@@ -3,6 +3,7 @@ import { Geist_Mono, Inter } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { cn } from "@/lib/utils"
 
@@ -30,14 +31,20 @@ export default function RootLayout({
     <html
       lang="ja"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        inter.variable
+      )}
     >
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider>
           <Header />
           <main className="min-h-[calc(100vh-4rem)] bg-muted/40">
-            <div className="mx-auto max-w-5xl px-4 py-6">{children}</div>
+            <div className="mx-auto max-w-7xl px-4 py-6">{children}</div>
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

@@ -30,6 +30,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u1",
     title: "タスク管理アプリ TaskFlow",
     url: "https://taskflow-demo.vercel.app",
+    githubUrl: "https://github.com/tanaka/taskflow",
     imageKey: "https://placehold.co/800x450/2563eb/white?text=TaskFlow",
     techStack: ["React", "Next.js", "Supabase", "Tailwind CSS"],
     description:
@@ -53,6 +54,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u2",
     title: "レシピ共有SNS CookShare",
     url: "https://cookshare-demo.vercel.app",
+    githubUrl: "https://github.com/sato/cookshare",
     imageKey: "https://placehold.co/800x450/f97316/white?text=CookShare",
     techStack: ["React", "Firebase", "Material UI"],
     description:
@@ -75,6 +77,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u3",
     title: "2Dアクションゲーム SkyRunner",
     url: "https://skyrunner-demo.netlify.app",
+    githubUrl: null,
     imageKey: "https://placehold.co/800x450/8b5cf6/white?text=SkyRunner",
     techStack: ["Unity", "C#"],
     description:
@@ -97,6 +100,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u1",
     title: "AI画像生成ツール PixelDream",
     url: "https://pixeldream-demo.vercel.app",
+    githubUrl: "https://github.com/tanaka/pixeldream",
     imageKey: "https://placehold.co/800x450/ec4899/white?text=PixelDream",
     techStack: ["Next.js", "Python", "Stable Diffusion", "Tailwind CSS"],
     description:
@@ -119,6 +123,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u2",
     title: "ポートフォリオサイト",
     url: "https://sato-portfolio.vercel.app",
+    githubUrl: "https://github.com/sato/portfolio",
     imageKey: "https://placehold.co/800x450/14b8a6/white?text=Portfolio",
     techStack: ["Astro", "Tailwind CSS", "Framer Motion"],
     description:
@@ -141,6 +146,7 @@ export const mockWorks: WorkWithUser[] = [
     userId: "u3",
     title: "天気予報チャットボット WeatherBot",
     url: "https://weatherbot-demo.vercel.app",
+    githubUrl: "https://github.com/suzuki/weatherbot",
     imageKey: "https://placehold.co/800x450/eab308/white?text=WeatherBot",
     techStack: ["Python", "OpenAI API", "LINE Messaging API"],
     description:
