@@ -25,7 +25,7 @@ export async function Header() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           {user ? (
             <>
               <Button asChild size="sm">
@@ -37,7 +37,7 @@ export async function Header() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <button className="size-8 cursor-pointer rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring">
                     <Avatar className="size-8">
                       <AvatarImage
                         src={user.image ?? undefined}
