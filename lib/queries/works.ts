@@ -12,6 +12,7 @@ export async function getWorks(course?: string): Promise<WorkWithUser[]> {
         id: users.id,
         name: users.name,
         image: users.image,
+        githubUrl: users.githubUrl,
       },
     })
     .from(works)
@@ -36,6 +37,7 @@ export async function getWorkById(
         id: users.id,
         name: users.name,
         image: users.image,
+        githubUrl: users.githubUrl,
       },
     })
     .from(works)
@@ -62,6 +64,7 @@ export async function getWorksByUserId(
         id: users.id,
         name: users.name,
         image: users.image,
+        githubUrl: users.githubUrl,
       },
     })
     .from(works)

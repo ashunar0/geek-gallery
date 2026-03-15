@@ -7,6 +7,7 @@ export const mockUsers: User[] = [
     email: "tanaka@example.com",
     emailVerified: null,
     image: "https://api.dicebear.com/9.x/avataaars/svg?seed=tanaka",
+    githubUrl: "https://github.com/tanaka",
   },
   {
     id: "u2",
@@ -14,6 +15,7 @@ export const mockUsers: User[] = [
     email: "sato@example.com",
     emailVerified: null,
     image: "https://api.dicebear.com/9.x/avataaars/svg?seed=sato",
+    githubUrl: "https://github.com/sato",
   },
   {
     id: "u3",
@@ -21,6 +23,7 @@ export const mockUsers: User[] = [
     email: "suzuki@example.com",
     emailVerified: null,
     image: "https://api.dicebear.com/9.x/avataaars/svg?seed=suzuki",
+    githubUrl: "https://github.com/suzuki",
   },
 ]
 
@@ -47,6 +50,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u1",
       name: "田中 太郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=tanaka",
+      githubUrl: "https://github.com/tanaka",
     },
   },
   {
@@ -70,6 +74,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u2",
       name: "佐藤 花子",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=sato",
+      githubUrl: "https://github.com/sato",
     },
   },
   {
@@ -93,6 +98,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u3",
       name: "鈴木 一郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=suzuki",
+      githubUrl: "https://github.com/suzuki",
     },
   },
   {
@@ -116,6 +122,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u1",
       name: "田中 太郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=tanaka",
+      githubUrl: "https://github.com/tanaka",
     },
   },
   {
@@ -139,6 +146,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u2",
       name: "佐藤 花子",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=sato",
+      githubUrl: "https://github.com/sato",
     },
   },
   {
@@ -162,6 +170,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u3",
       name: "鈴木 一郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=suzuki",
+      githubUrl: "https://github.com/suzuki",
     },
   },
 ]

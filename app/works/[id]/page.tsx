@@ -4,7 +4,8 @@ import { notFound } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { CourseBadge } from "@/components/course-badge"
 import { mockWorks } from "@/lib/mock-data"
-import { ArrowLeft, ExternalLink, Github } from "lucide-react"
+import { GitHubIcon } from "@/components/icons"
+import { ArrowLeft, ExternalLink } from "lucide-react"
 
 export default async function WorkDetailPage({
   params,
@@ -74,7 +75,7 @@ export default async function WorkDetailPage({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
                 >
-                  <Github className="size-3.5" />
+                  <GitHubIcon className="size-3.5" />
                   GitHub
                 </a>
               )}
@@ -112,23 +113,34 @@ export default async function WorkDetailPage({
 
         {/* サイドカード（右） — 作者情報 */}
         <Card className="w-full shrink-0 lg:w-64">
-          <Link
-            href={`/users/${work.user.id}`}
-            className="flex flex-col items-center gap-3 p-6 transition-colors hover:bg-muted/30"
-          >
-            {work.user.image && (
-              <Image
-                src={work.user.image}
-                alt={work.user.name ?? ""}
-                width={80}
-                height={80}
-                className="rounded-full"
-              />
-            )}
-            <div className="text-center">
+          <div className="flex flex-col items-center gap-3 p-6">
+            <Link
+              href={`/users/${work.user.id}`}
+              className="flex flex-col items-center gap-3 transition-colors hover:opacity-80"
+            >
+              {work.user.image && (
+                <Image
+                  src={work.user.image}
+                  alt={work.user.name ?? ""}
+                  width={80}
+                  height={80}
+                  className="rounded-full"
+                />
+              )}
               <p className="font-semibold">{work.user.name}</p>
-            </div>
-          </Link>
+            </Link>
+            {work.user.githubUrl && (
+              <a
+                href={work.user.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+                title="GitHub"
+              >
+                <GitHubIcon className="size-5" />
+              </a>
+            )}
+          </div>
         </Card>
       </div>
     </div>
