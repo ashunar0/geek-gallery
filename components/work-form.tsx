@@ -111,10 +111,24 @@ export function WorkForm({ work }: WorkFormProps) {
 
   // --- 送信 ---
   async function onSubmit(data: WorkFormValues) {
+    const formData = new FormData()
+    formData.set("title", data.title)
+    formData.set("url", data.url)
+    formData.set("githubUrl", data.githubUrl ?? "")
+    formData.set("course", data.course)
+    formData.set("cohort", String(data.cohort ?? ""))
+    formData.set("duration", data.duration)
+    formData.set("techStack", JSON.stringify(data.techStack))
+    formData.set("description", data.description)
+    formData.set("highlight", data.highlight ?? "")
+    if (imageFile) {
+      formData.set("image", imageFile)
+    }
+
     if (isEdit) {
-      await updateWork(work.id, data)
+      await updateWork(work.id, formData)
     } else {
-      await createWork(data)
+      await createWork(formData)
     }
   }
 

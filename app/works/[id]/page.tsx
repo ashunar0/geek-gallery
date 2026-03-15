@@ -62,7 +62,7 @@ export default async function WorkDetailPage({
 
           {/* サムネイル */}
           <div className="p-5">
-            <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
+            <div className="relative aspect-video overflow-hidden rounded-lg border bg-muted">
               {work.imageKey ? (
                 <Image
                   src={work.imageKey}

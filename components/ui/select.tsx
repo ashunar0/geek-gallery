@@ -21,13 +21,15 @@ export function Select({
   disabled = false,
   children,
 }: SelectProps) {
+  const rootProps: ComponentProps<typeof SelectPrimitive.Root> = {
+    onValueChange,
+    disabled,
+  }
+  if (value !== undefined) rootProps.value = value
+  if (defaultValue !== undefined) rootProps.defaultValue = defaultValue
+
   return (
-    <SelectPrimitive.Root
-      value={value}
-      defaultValue={defaultValue}
-      onValueChange={onValueChange}
-      disabled={disabled}
-    >
+    <SelectPrimitive.Root {...rootProps}>
       {children}
     </SelectPrimitive.Root>
   );
