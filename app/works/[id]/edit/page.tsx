@@ -1,7 +1,7 @@
 import { redirect, notFound } from "next/navigation"
 import { auth } from "@/auth"
 import { WorkForm } from "@/components/work-form"
-import { mockWorks } from "@/lib/mock-data"
+import { getWorkById } from "@/lib/queries/works"
 
 export default async function EditWorkPage({
   params,
@@ -12,7 +12,7 @@ export default async function EditWorkPage({
   if (!session) redirect("/")
 
   const { id } = await params
-  const work = mockWorks.find((w) => w.id === id)
+  const work = await getWorkById(id)
 
   if (!work) notFound()
 

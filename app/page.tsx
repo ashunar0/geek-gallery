@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import { WorkCard } from "@/components/work-card"
 import { CourseFilter } from "@/components/course-filter"
-import { mockWorks } from "@/lib/mock-data"
+import { getWorks } from "@/lib/queries/works"
 
 type Props = {
   searchParams: Promise<{ course?: string }>
@@ -10,10 +10,7 @@ type Props = {
 export default async function HomePage({ searchParams }: Props) {
   const { course } = await searchParams
 
-  // TODO: #15 でDB取得に切り替え
-  const works = course
-    ? mockWorks.filter((w) => w.course === course)
-    : mockWorks
+  const works = await getWorks(course)
 
   return (
     <div className="flex flex-col gap-6">

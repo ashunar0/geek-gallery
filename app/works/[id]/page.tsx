@@ -3,7 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { CourseBadge } from "@/components/course-badge"
-import { mockWorks } from "@/lib/mock-data"
+import { getWorkById } from "@/lib/queries/works"
 import { GitHubIcon } from "@/components/icons"
 import { ArrowLeft, ExternalLink } from "lucide-react"
 
@@ -13,7 +13,7 @@ export default async function WorkDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const work = mockWorks.find((w) => w.id === id)
+  const work = await getWorkById(id)
 
   if (!work) notFound()
 

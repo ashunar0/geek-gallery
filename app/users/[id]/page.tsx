@@ -2,7 +2,8 @@ import { notFound } from "next/navigation"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { GitHubIcon } from "@/components/icons"
 import { WorkCard } from "@/components/work-card"
-import { mockUsers, mockWorks } from "@/lib/mock-data"
+import { getUserById } from "@/lib/queries/users"
+import { getWorksByUserId } from "@/lib/queries/works"
 
 export default async function UserPage({
   params,
@@ -10,11 +11,11 @@ export default async function UserPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const user = mockUsers.find((u) => u.id === id)
+  const user = await getUserById(id)
 
   if (!user) notFound()
 
-  const works = mockWorks.filter((w) => w.userId === user.id)
+  const works = await getWorksByUserId(id)
 
   return (
     <div className="space-y-8">
