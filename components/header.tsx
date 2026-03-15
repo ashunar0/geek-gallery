@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { LogOut, Plus } from "lucide-react"
-import { auth, signIn, signOut } from "@/auth"
+import { auth, signOut } from "@/auth"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {

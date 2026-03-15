@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { ExternalLink } from "lucide-react"
 
 export function Footer() {
