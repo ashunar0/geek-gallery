@@ -3,11 +3,12 @@ import { notFound } from "next/navigation"
 import { auth } from "@/auth"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { GitHubIcon } from "@/components/icons"
+import { GitHubIcon, XIcon } from "@/components/icons"
+import { ProfileEditDialog } from "@/components/profile-edit-dialog"
 import { WorkCard } from "@/components/work-card"
 import { getUserById } from "@/lib/queries/users"
 import { getWorksByUserId } from "@/lib/queries/works"
-import { Plus } from "lucide-react"
+import { Globe, Plus } from "lucide-react"
 
 export default async function UserPage({
   params,
@@ -26,23 +27,48 @@ export default async function UserPage({
     <div className="space-y-8">
       {/* プロフィール */}
       <div className="flex items-center gap-8 py-8">
-        <Avatar className="size-16">
+        <Avatar className="size-24">
           {user.image && <AvatarImage src={user.image} alt={user.name ?? ""} />}
         </Avatar>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-1 flex-col gap-3">
           <h1 className="text-xl font-bold">{user.name}</h1>
-          {user.githubUrl && (
-            <a
-              href={user.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <GitHubIcon className="size-4" />
-              GitHub
-            </a>
+          {user.bio && (
+            <p className="text-sm text-muted-foreground">{user.bio}</p>
           )}
+          <div className="flex items-center gap-3">
+            {user.githubUsername && (
+              <a
+                href={`https://github.com/${user.githubUsername}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <GitHubIcon className="size-5" />
+              </a>
+            )}
+            {user.xUsername && (
+              <a
+                href={`https://x.com/${user.xUsername}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <XIcon className="size-5" />
+              </a>
+            )}
+            {user.websiteUrl && (
+              <a
+                href={user.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Globe className="size-5" />
+              </a>
+            )}
+          </div>
         </div>
+        {isOwner && <ProfileEditDialog user={user} />}
       </div>
 
       {/* 作品一覧 */}

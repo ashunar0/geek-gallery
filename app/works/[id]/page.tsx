@@ -8,6 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { CourseBadge } from "@/components/course-badge"
 import { getWorkById } from "@/lib/queries/works"
 import { GitHubIcon } from "@/components/icons"
+import { DeleteWorkButton } from "@/components/delete-work-button"
 import { ArrowLeft, ExternalLink, Pencil } from "lucide-react"
 
 export default async function WorkDetailPage({
@@ -46,16 +47,19 @@ export default async function WorkDetailPage({
             <div className="flex items-center justify-between gap-3">
               <h1 className="text-xl font-bold tracking-tight">{work.title}</h1>
               {isOwner && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button asChild variant="ghost" size="sm">
-                      <Link href={`/works/${work.id}/edit`}>
-                        <Pencil className="size-4" />
-                      </Link>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>編集する</TooltipContent>
-                </Tooltip>
+                <div className="flex items-center gap-1">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button asChild variant="ghost" size="sm">
+                        <Link href={`/works/${work.id}/edit`}>
+                          <Pencil className="size-4" />
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>編集する</TooltipContent>
+                  </Tooltip>
+                  <DeleteWorkButton workId={work.id} />
+                </div>
               )}
             </div>
           </div>
@@ -154,9 +158,9 @@ export default async function WorkDetailPage({
               )}
               <p className="font-semibold">{work.user.name}</p>
             </Link>
-            {work.user.githubUrl && (
+            {work.user.githubUsername && (
               <a
-                href={work.user.githubUrl}
+                href={`https://github.com/${work.user.githubUsername}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-foreground"

@@ -7,7 +7,10 @@ export const mockUsers: User[] = [
     email: "tanaka@example.com",
     emailVerified: null,
     image: "https://api.dicebear.com/9.x/avataaars/svg?seed=tanaka",
-    githubUrl: "https://github.com/tanaka",
+    bio: null,
+    githubUsername: "tanaka",
+    xUsername: null,
+    websiteUrl: null,
   },
   {
     id: "u2",
@@ -15,7 +18,10 @@ export const mockUsers: User[] = [
     email: "sato@example.com",
     emailVerified: null,
     image: "https://api.dicebear.com/9.x/avataaars/svg?seed=sato",
-    githubUrl: "https://github.com/sato",
+    bio: null,
+    githubUsername: "sato",
+    xUsername: null,
+    websiteUrl: null,
   },
   {
     id: "u3",
@@ -23,7 +29,10 @@ export const mockUsers: User[] = [
     email: "suzuki@example.com",
     emailVerified: null,
     image: "https://api.dicebear.com/9.x/avataaars/svg?seed=suzuki",
-    githubUrl: "https://github.com/suzuki",
+    bio: null,
+    githubUsername: "suzuki",
+    xUsername: null,
+    websiteUrl: null,
   },
 ]
 
@@ -50,7 +59,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u1",
       name: "田中 太郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=tanaka",
-      githubUrl: "https://github.com/tanaka",
+      githubUsername: "tanaka",
     },
   },
   {
@@ -74,7 +83,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u2",
       name: "佐藤 花子",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=sato",
-      githubUrl: "https://github.com/sato",
+      githubUsername: "sato",
     },
   },
   {
@@ -98,7 +107,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u3",
       name: "鈴木 一郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=suzuki",
-      githubUrl: "https://github.com/suzuki",
+      githubUsername: "suzuki",
     },
   },
   {
@@ -122,7 +131,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u1",
       name: "田中 太郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=tanaka",
-      githubUrl: "https://github.com/tanaka",
+      githubUsername: "tanaka",
     },
   },
   {
@@ -146,7 +155,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u2",
       name: "佐藤 花子",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=sato",
-      githubUrl: "https://github.com/sato",
+      githubUsername: "sato",
     },
   },
   {
@@ -170,7 +179,7 @@ export const mockWorks: WorkWithUser[] = [
       id: "u3",
       name: "鈴木 一郎",
       image: "https://api.dicebear.com/9.x/avataaars/svg?seed=suzuki",
-      githubUrl: "https://github.com/suzuki",
+      githubUsername: "suzuki",
     },
   },
 ]

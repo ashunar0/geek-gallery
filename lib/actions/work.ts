@@ -72,6 +72,24 @@ export async function createWork(formData: FormData) {
   redirect(`/works/${work.id}`)
 }
 
+export async function deleteWork(id: string) {
+  const session = await auth()
+  if (!session?.user?.id) throw new Error("認証が必要です")
+
+  const [existing] = await db
+    .select()
+    .from(works)
+    .where(eq(works.id, id))
+    .limit(1)
+
+  if (!existing) throw new Error("作品が見つかりません")
+  if (existing.userId !== session.user.id) throw new Error("削除権限がありません")
+
+  await db.delete(works).where(eq(works.id, id))
+
+  redirect("/")
+}
+
 export async function updateWork(id: string, formData: FormData) {
   const session = await auth()
   if (!session?.user?.id) throw new Error("認証が必要です")
