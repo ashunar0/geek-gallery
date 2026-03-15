@@ -16,10 +16,23 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "GeekGallery | GeekSalon 受講生作品集",
+  title: {
+    default: "GeekGallery | GeekSalon 受講生作品集",
+    template: "%s | GeekGallery",
+  },
   description: "GeekSalon 受講生の作品をギャラリー形式で閲覧できるサイト",
   icons: {
     icon: "/gallery.svg",
+  },
+  openGraph: {
+    title: "GeekGallery | GeekSalon 受講生作品集",
+    description: "GeekSalon 受講生の作品をギャラリー形式で閲覧できるサイト",
+    siteName: "GeekGallery",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 }
 

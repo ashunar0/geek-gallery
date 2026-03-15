@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { auth } from "@/auth"
@@ -9,6 +10,30 @@ import { WorkCard } from "@/components/work-card"
 import { getUserById } from "@/lib/queries/users"
 import { getWorksByUserId } from "@/lib/queries/works"
 import { Globe, Plus } from "lucide-react"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const { id } = await params
+  const user = await getUserById(id)
+
+  if (!user) return { title: "ユーザーが見つかりません" }
+
+  const name = user.name ?? "ユーザー"
+  const description = user.bio ?? `${name}の作品一覧`
+
+  return {
+    title: `${name}の作品`,
+    description,
+    openGraph: {
+      title: `${name}の作品`,
+      description,
+      type: "profile",
+    },
+  }
+}
 
 export default async function UserPage({
   params,

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -14,6 +15,36 @@ import { getWorkById } from "@/lib/queries/works"
 import { GitHubIcon, XIcon } from "@/components/icons"
 import { DeleteWorkButton } from "@/components/delete-work-button"
 import { ArrowLeft, ExternalLink, Globe, Pencil } from "lucide-react"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const { id } = await params
+  const work = await getWorkById(id)
+
+  if (!work) return { title: "作品が見つかりません" }
+
+  const description = work.description.slice(0, 120)
+
+  return {
+    title: work.title,
+    description,
+    openGraph: {
+      title: work.title,
+      description,
+      type: "article",
+      ...(work.imageKey && { images: [{ url: work.imageKey }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: work.title,
+      description,
+      ...(work.imageKey && { images: [work.imageKey] }),
+    },
+  }
+}
 
 export default async function WorkDetailPage({
   params,
