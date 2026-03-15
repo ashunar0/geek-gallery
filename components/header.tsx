@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Plus } from "lucide-react"
+import { LogOut, Plus } from "lucide-react"
 import { auth, signIn, signOut } from "@/auth"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -57,7 +57,11 @@ export async function Header() {
                         await signOut()
                       }}
                     >
-                      <button type="submit" className="w-full text-left">
+                      <button
+                        type="submit"
+                        className="flex w-full cursor-pointer items-center gap-2 text-left text-sm"
+                      >
+                        <LogOut className="size-4" />
                         ログアウト
                       </button>
                     </form>

@@ -12,7 +12,10 @@ export async function getWorks(course?: string): Promise<WorkWithUser[]> {
         id: users.id,
         name: users.name,
         image: users.image,
+        bio: users.bio,
         githubUsername: users.githubUsername,
+        xUsername: users.xUsername,
+        websiteUrl: users.websiteUrl,
       },
     })
     .from(works)
@@ -37,7 +40,10 @@ export async function getWorkById(
         id: users.id,
         name: users.name,
         image: users.image,
+        bio: users.bio,
         githubUsername: users.githubUsername,
+        xUsername: users.xUsername,
+        websiteUrl: users.websiteUrl,
       },
     })
     .from(works)
@@ -64,7 +70,10 @@ export async function getWorksByUserId(
         id: users.id,
         name: users.name,
         image: users.image,
+        bio: users.bio,
         githubUsername: users.githubUsername,
+        xUsername: users.xUsername,
+        websiteUrl: users.websiteUrl,
       },
     })
     .from(works)

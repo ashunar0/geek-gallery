@@ -4,12 +4,16 @@ import { notFound } from "next/navigation"
 import { auth } from "@/auth"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { CourseBadge } from "@/components/course-badge"
 import { getWorkById } from "@/lib/queries/works"
-import { GitHubIcon } from "@/components/icons"
+import { GitHubIcon, XIcon } from "@/components/icons"
 import { DeleteWorkButton } from "@/components/delete-work-button"
-import { ArrowLeft, ExternalLink, Pencil } from "lucide-react"
+import { ArrowLeft, ExternalLink, Globe, Pencil } from "lucide-react"
 
 export default async function WorkDetailPage({
   params,
@@ -35,7 +39,7 @@ export default async function WorkDetailPage({
 
       <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
         {/* メインカード（左） */}
-        <Card className="flex-1 overflow-hidden">
+        <Card className="min-w-0 flex-3 overflow-hidden">
           {/* ヘッダー */}
           <div className="space-y-2 p-5 pb-0">
             <div className="flex flex-wrap items-center gap-3">
@@ -141,33 +145,68 @@ export default async function WorkDetailPage({
         </Card>
 
         {/* サイドカード（右） — 作者情報 */}
-        <Card className="w-full shrink-0 lg:w-64">
-          <div className="flex flex-col items-center gap-3 p-6">
-            <Link
-              href={`/users/${work.user.id}`}
-              className="flex flex-col items-center gap-3 transition-colors hover:opacity-80"
-            >
-              {work.user.image && (
-                <Image
-                  src={work.user.image}
-                  alt={work.user.name ?? ""}
-                  width={80}
-                  height={80}
-                  className="rounded-full"
-                />
-              )}
-              <p className="font-semibold">{work.user.name}</p>
-            </Link>
-            {work.user.githubUsername && (
-              <a
-                href={`https://github.com/${work.user.githubUsername}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                title="GitHub"
+        <Card className="w-full shrink-0 lg:w-80">
+          <div className="p-6">
+            <div className="flex items-center gap-4">
+              <Link
+                href={`/users/${work.user.id}`}
+                className="shrink-0 hover:opacity-80"
               >
-                <GitHubIcon className="size-5" />
-              </a>
+                {work.user.image && (
+                  <Image
+                    src={work.user.image}
+                    alt={work.user.name ?? ""}
+                    width={48}
+                    height={48}
+                    className="rounded-full"
+                  />
+                )}
+              </Link>
+              <div className="min-w-0">
+                <Link
+                  href={`/users/${work.user.id}`}
+                  className="font-semibold hover:underline"
+                >
+                  {work.user.name}
+                </Link>
+                <div className="mt-1 flex items-center gap-2">
+                  {work.user.githubUsername && (
+                    <a
+                      href={`https://github.com/${work.user.githubUsername}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <GitHubIcon className="size-4" />
+                    </a>
+                  )}
+                  {work.user.xUsername && (
+                    <a
+                      href={`https://x.com/${work.user.xUsername}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <XIcon className="size-4" />
+                    </a>
+                  )}
+                  {work.user.websiteUrl && (
+                    <a
+                      href={work.user.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Globe className="size-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+            {work.user.bio && (
+              <p className="mt-3 text-sm text-muted-foreground">
+                {work.user.bio}
+              </p>
             )}
           </div>
         </Card>
