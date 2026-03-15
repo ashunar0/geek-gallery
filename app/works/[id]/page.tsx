@@ -1,21 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { auth } from "@/auth"
+import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { CourseBadge } from "@/components/course-badge"
 import { getWorkById } from "@/lib/queries/works"
 import { GitHubIcon } from "@/components/icons"
-import { ArrowLeft, ExternalLink } from "lucide-react"
+import { ArrowLeft, ExternalLink, Pencil } from "lucide-react"
 
 export default async function WorkDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
-  const { id } = await params
+  const [{ id }, session] = await Promise.all([params, auth()])
   const work = await getWorkById(id)
 
   if (!work) notFound()
+
+  const isOwner = session?.user?.id === work.userId
 
   return (
     <div className="space-y-4">
@@ -38,7 +43,21 @@ export default async function WorkDetailPage({
                 第{work.cohort}期 · {work.duration}
               </span>
             </div>
-            <h1 className="text-xl font-bold tracking-tight">{work.title}</h1>
+            <div className="flex items-center justify-between gap-3">
+              <h1 className="text-xl font-bold tracking-tight">{work.title}</h1>
+              {isOwner && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button asChild variant="ghost" size="sm">
+                      <Link href={`/works/${work.id}/edit`}>
+                        <Pencil className="size-4" />
+                      </Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>編集する</TooltipContent>
+                </Tooltip>
+              )}
+            </div>
           </div>
 
           {/* サムネイル */}

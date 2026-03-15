@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { TooltipProvider } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -40,11 +41,13 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="flex min-h-screen flex-col">
         <ThemeProvider>
-          <Header />
-          <main className="flex-1 bg-muted/40">
-            <div className="mx-auto max-w-7xl px-4 py-6">{children}</div>
-          </main>
-          <Footer />
+          <TooltipProvider>
+            <Header />
+            <main className="flex-1 bg-muted/40">
+              <div className="mx-auto max-w-7xl px-4 py-6">{children}</div>
+            </main>
+            <Footer />
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
